@@ -26,10 +26,10 @@ My initial hypothesis is that drivers of severity will be most strongly associat
   * Dealt with null values
 * Explore data in search of drivers of severity
   * Answer the following initial questions
-    * Is there a correlation between zipcode and severity?
-    * Is there a correlation visibility and severity?
-    * Is there a correlation between the day of week and severity?
-    * Is there a difference in average average severity between zipcodes?
+    * Is there a correlation between temperature and severity?
+    * Is there a correlation pressure and severity?
+    * Is there a correlation between windspeed and severity?
+    * Is there a correlation between severity between duration?
 * Develop a Model to predict property value
   * Use drivers identified in explore to help build predictive models of different types
   * Evaluate models on train and validate data
@@ -51,7 +51,7 @@ My initial hypothesis is that drivers of severity will be most strongly associat
 | humidity                     | %              | Value of Relative Humidity for the during the accident                               |                                                                               |
 | wind_direction               | ° Compass      | The average (arithmetic mean) value of Wind Direction for the accident               |                                                                                                 |
 | wind_speed                   | mi/h           | value of Wind Speed during the accident                                               |                                                                       |
-| month                        | Month          | The month of the year the fire was discovered and air quality measured  
+| month                        | Month          | The month of the accident took place
 |
 | temp_mean                    | °F             | The value of Outdoor Temperature for the day                                         |                                                                     |
 | humidity_mean                | %              | The value of Relative Humidity for the day                                           |                                                                     |
@@ -93,16 +93,9 @@ My initial hypothesis is that drivers of severity will be most strongly associat
 
 # Conclusions
 
-#### Takeaways and Key Findings
 
-* The younger the property the better for property value
-* The bigger the living area the bigger the property value
-* Location matters for property value
-* Model still needs improvement
+### Takeaways and Key Findings
+- Individual features may have a relationsip with severity but non strong enough to act as strong indicators
 
 ### Recommendations and Next Steps
-
-* It would nice to have the data to check if the included appliances or the type of heating services (gas or electric) of the property would affect property value
-* More time is needed to work on features to better improve the model
-    - latitude and longitude could hopefully give insights into cities and neighborhoods with higher or lower property values
-    - pools and garages could also be looked into
+- If environmental factors don't play a significant role in severity, I think that classification features such as location, terrain, and road features would act as great indicators so would be worth exploring.

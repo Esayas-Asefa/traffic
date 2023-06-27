@@ -1,32 +1,27 @@
-'''
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.feature_selection import SelectKBest, RFE, f_regression, SequentialFeatureSelector
+from sklearn.feature_selection import SelectKBest, RFE, f_regression, SequentialFeatureSelector, chi2
+from sklearn.metrics import mean_squared_error
 from scipy import stats
+from sklearn.cluster import KMeans
+from scipy.stats import pearsonr
 
 import acquire as acq
 import prepare as prep
-
+import pandas as pd
 
 df = acq.get_traffic_data()
+df = pd.read_csv('output.csv')
+df = prep.prep_output(df)
+#Remove all classification values
+df = prep.remove_class(df)
 
-df = prep.prep_traffic(df)
-'''
+train, val, test = prep.split_data(df)
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.model_selection import train_test_split
-from sklearn.cluster import KMeans
-from sklearn.feature_selection import SelectKBest, f_regression, chi2
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_selection import RFE
-from scipy import stats
 
 '''
 *------------------*
@@ -263,3 +258,118 @@ def vis(df):
         print(top_30_city)
     
     return plt.show(), print(top_30_city)
+
+
+
+
+def plot_severity_vs_temp(train):
+    # Fit a linear regression model
+    
+    train, val, test = prep.split_data(df)
+    
+    model = LinearRegression()
+    X = train[['temp']]
+    y = train['severity']
+    model.fit(X, y)
+
+    # Make predictions
+    y_pred = model.predict(X)
+
+    # Calculate RMSE
+    rmse = mean_squared_error(y, y_pred, squared=False)
+    
+    corr, p_value = pearsonr(train['temp'], train['severity'])
+    print(f'Correlation coefficient: {corr:.3f}')
+    print(f'p-value: {p_value:.3f}')
+
+    # Create a scatter plot
+    plt.figure(figsize=(10, 6))
+    plt.scatter(train['temp'], train['severity'], alpha=0.5)
+    plt.plot(train['temp'], y_pred, color='red')
+    plt.title(f'Severity vs. Temperature (RMSE: {rmse:.2f})')
+    plt.xlabel('Temperature')
+    plt.ylabel('Severity')
+    plt.show()
+
+
+def plot_severity_vs_wind_speed(train):
+    # Fit a linear regression model
+    model = LinearRegression()
+    X = train[['wind_speed_mph']]
+    y = train['severity']
+    model.fit(X, y)
+
+    # Make predictions
+    y_pred = model.predict(X)
+
+    # Calculate RMSE
+    rmse = mean_squared_error(y, y_pred, squared=False)
+    
+    corr, p_value = pearsonr(train['wind_speed_mph'], train['severity'])
+    print(f'Correlation coefficient: {corr:.3f}')
+    print(f'p-value: {p_value:.3f}')
+
+    # Create a scatter plot
+    plt.figure(figsize=(10, 6))
+    plt.scatter(train['wind_speed_mph'], train['severity'], alpha=0.5)
+    plt.plot(train['wind_speed_mph'], y_pred, color='red')
+    plt.title(f'Severity vs. Wind Speed (mph) (RMSE: {rmse:.2f})')
+    plt.xlabel('Wind Speed mph')
+    plt.ylabel('Severity')
+    plt.show()
+
+def plot_severity_vs_duration(train):
+    # Fit a linear regression model
+    model = LinearRegression()
+    X = train[['duration']]
+    y = train['severity']
+    model.fit(X, y)
+
+    # Make predictions
+    y_pred = model.predict(X)
+
+    # Calculate RMSE
+    rmse = mean_squared_error(y, y_pred, squared=False)
+    
+    corr, p_value = pearsonr(train['duration'], train['severity'])
+    print(f'Correlation coefficient: {corr:.3f}')
+    print(f'p-value: {p_value:.3f}')
+
+    # Create a scatter plot
+    plt.figure(figsize=(10, 6))
+    plt.scatter(train['duration'], train['severity'], alpha=0.5)
+    plt.plot(train['duration'], y_pred, color='red')
+    plt.title(f'Severity vs. Duration (RMSE: {rmse:.2f})')
+    plt.xlabel('Duration')
+    plt.ylabel('Severity')
+    plt.show()
+    
+def plot_severity_vs_pressure(train):
+    # Fit a linear regression model
+    model = LinearRegression()
+    X = train[['pressure']]
+    y = train['severity']
+    model.fit(X, y)
+
+    # Make predictions
+    y_pred = model.predict(X)
+
+    # Calculate RMSE
+    rmse = mean_squared_error(y, y_pred, squared=False)
+    
+    corr, p_value = pearsonr(train['pressure'], train['severity'])
+    print(f'Correlation coefficient: {corr:.3f}')
+    print(f'p-value: {p_value:.3f}')
+
+    # Create a scatter plot
+    plt.figure(figsize=(10, 6))
+    plt.scatter(train['pressure'], train['severity'], alpha=0.5)
+    plt.plot(train['pressure'], y_pred, color='red')
+    plt.title(f'Severity vs. Atmospheric Pressure (RMSE: {rmse:.2f})')
+    plt.xlabel('Atmospheric Pressure')
+    plt.ylabel('Severity')
+    plt.show()
+
+# Call the function
+plot_severity_vs_pressure(train)
+
