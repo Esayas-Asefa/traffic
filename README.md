@@ -41,45 +41,30 @@ My initial hypothesis is that drivers of severity will be most strongly associat
 
 | Original                     | Feature        | Definition                                              |
 | :--------------------------- | :---------     | :------------------------------------------------------ |
-| ID                           | Identification | This is a unique identifier of the accident record.              |
-
-| Source                       | Source         | Source of raw accident data                              |
-
-| Severity (Target)            | severity rank  | Shows the severity of the accident, a number between 1 and 4, where 1 indicates the least impact on traffic (i.e., short delay: 1)        
-|
-| temp                         | °F             |  Outdoor Temperature for during the accident                                         |                                                                    |
-| humidity                     | %              | Value of Relative Humidity for the during the accident                               |                                                                               |
-| wind_direction               | ° Compass      | The average (arithmetic mean) value of Wind Direction for the accident               |                                                                                                 |
-| wind_speed                   | mi/h           | value of Wind Speed during the accident                                               |                                                                       |
-| month                        | Month          | The month of the accident took place
-|
-| temp_mean                    | °F             | The value of Outdoor Temperature for the day                                         |                                                                     |
-| humidity_mean                | %              | The value of Relative Humidity for the day                                           |                                                                     |
-| wind_direction_mean          | ° Compass      | The value of Wind Direction for the day                                               |                                                                    |
-| wind_speed_mean              | Knots          | The value of Wind Speed for the day                                                   |                                                                    |
-| month                        | Month          | The month of the the accident occurred represented by 1-12   
-|                    
-| city                         | City           | City in which the accident occurred
-|                     
-| county                       | County         | County in which accident occurred    
-|                    
-| state                        | State          | State in which accident occurred
-|                      
-| zipcode                      | Zipcode        | Zipcode in which accident occurred                          
-|                     
-| pressure                     | Atm            | barometric pressure in weather at the time of the accident
-|                      
-| visibility                   | Mi             | miles of visibility           
-|                     
-| weather_condition            | Weather condition | general weather condition              
-|                     
-| sunrise_sunset               | Night/Day      | day or nich    
-|                      
-| day_of_week                  | Day of the week | day of week 0=sunday, 6=Saturday        
-|                     
-| season                       | Season of accident | Winter, Spring, Summer, Fall
-|               
-| duration                     | minuts/hours of accidents | how long the traffic flow was impacted      
+| ID                           | Identification | This is a unique identifier of the accident record.     |
+| Source                       | Source         | Source of raw accident data                             |
+| Severity (Target)            | severity rank  | Shows the severity of the accident, a number between 1 and 4, where 1 indicates the least impact on traffic (i.e., short delay: 1)|        
+| temp                         | °F             |  Outdoor Temperature for during the accident| 
+| humidity                     | %              | Value of Relative Humidity for the during the accident|
+| wind_direction               | ° Compass      | The average (arithmetic mean) value of Wind Direction for the accident|
+| wind_speed                   | mi/h           | value of Wind Speed during the accident| 
+| month                        | Month          | The month of the accident took place|
+| temp_mean                    | °F             | The value of Outdoor Temperature for the day|
+| humidity_mean                | %              | The value of Relative Humidity for the day|
+| wind_direction_mean          | ° Compass      | The value of Wind Direction for the day |
+| wind_speed_mean              | Knots          | The value of Wind Speed for the day|
+| month                        | Month          | The month of the the accident occurred represented by 1-12|                
+| city                         | City           | City in which the accident occurred|                 
+| county                       | County         | County in which accident occurred|         
+| state                        | State          | State in which accident occurred|                   
+| zipcode                      | Zipcode        | Zipcode in which accident occurred|               
+| pressure                     | Atm            | barometric pressure in weather at the time of the accident|                  
+| visibility                   | Mi             | miles of visibility|              
+| weather_condition            | Weather condition | general weather condition|                   
+| sunrise_sunset               | Night/Day      | day or nich |                
+| day_of_week                  | Day of the week | day of week 0=sunday, 6=Saturday |                 
+| season                       | Season of accident | Winter, Spring, Summer, Fall |             
+| duration                     | minuts/hours of accidents | how long the traffic flow was impacted|  
 
 ## Steps to Reproduce
 
